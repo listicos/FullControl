@@ -3,9 +3,11 @@
 //
 //#import "JASidePanelController.h"
 
+#import <Foundation/Foundation.h>
 #import <NMSSH/NMSSH.h>
 
 #import "NSString+FontAwesome.h"
 #import "FAImageView.h"
 #import "UIFont+FontAwesome.h"
 #import "UIImage+ImageEffects.h"
+#import "StarRatingControl.h"

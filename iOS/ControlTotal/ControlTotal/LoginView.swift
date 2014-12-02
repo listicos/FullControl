@@ -29,6 +29,7 @@ class LoginView:MasterView, UITextFieldDelegate, NMSSHSessionDelegate, NMSSHChan
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         var color: UIColor = UIColor(red: CGFloat(0.8), green: CGFloat(0.8), blue: CGFloat(0.8), alpha: CGFloat(1.0))
 
         let attributesDictionary = [NSForegroundColorAttributeName: color]
@@ -45,6 +46,10 @@ class LoginView:MasterView, UITextFieldDelegate, NMSSHSessionDelegate, NMSSHChan
         self.sshQueue = dispatch_queue_create("NMSSH.queue", DISPATCH_QUEUE_SERIAL)
         
         self.login.setTitle("Connecting...", forState: UIControlState.Disabled)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println(segue.identifier)
     }
     
     func dismissKeyboard(){
@@ -139,39 +144,6 @@ class LoginView:MasterView, UITextFieldDelegate, NMSSHSessionDelegate, NMSSHChan
             alert.addButtonWithTitle("OK")
             alert.show()
         }
-        
-        
-    
-        /*
-        dispatch_once(&onceToken){
-            dispatch_async(self.sshQueue, {
-                println(ip)
-                self.session = NMSSHSession.connectToHost(ip, withUsername: self.username.text)! as NMSSHSession
-                self.session.delegate = self
-
-                if (!self.session.connected) {
-                    dispatch_async(dispatch_get_main_queue(), {
-                            println("Connection error")
-                        });
-                    return;
-                }else{
-                    println("connected")
-                    var authenticated:Bool = self.session.authenticateByKeyboardInteractiveUsingBlock({
-                        (var passString:String!) -> String! in
-                        return self.password.text
-                    })
-                    if (self.session.authorized) {
-                        println("authorized")
-                        var mainControlView = self.storyboard?.instantiateViewControllerWithIdentifier("MainControl") as MainControlView
-                        self.session.channel.startShell(nil)
-                        mainControlView.session = self.session
-                        self.presentViewController(mainControlView, animated: true, completion: nil) 
-                        //self.dismissViewControllerAnimated(true, completion: nil)
-                        //println(self.session.channel.execute("osascript -e 'set volume 7'" ,error:nil,timeout:10))
-                    }
-                }
-            });
-        }*/
     }
     
     func session(session: NMSSHSession!, didDisconnectWithError error: NSError!) {

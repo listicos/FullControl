@@ -92,6 +92,10 @@ class SearchDevicesView: MasterView,  NSNetServiceBrowserDelegate, NSNetServiceD
         println("DidStop")
     }
     
+    func netService(sender: NSNetService, didNotPublish errorDict: [NSObject : AnyObject]) {
+        println("didNotPublish")
+    }
+    
     func netServiceDidResolveAddress(sender: NSNetService) {
         println("netServiceDidResolveAddress")
         self.myService.stop()
@@ -136,6 +140,7 @@ class SearchDevicesView: MasterView,  NSNetServiceBrowserDelegate, NSNetServiceD
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return services.count
     }
+    
     var loginView:LoginView = LoginView()
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

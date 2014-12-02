@@ -32,11 +32,13 @@ class Command : NSOperation, NMSSHChannelDelegate{
             var c = CommandGenerator.app(self.app, command: self.command, extra:self.extra)
             if(!c.isEmpty){
                 self.session.channel.delegate = self
-                self.response = self.cg.handleResponse(self.command, response:self.session.channel.execute(c, error: &self.error))
-                self.delegate?.commandDidResolve!(self)
+                if !self.cancelled{
+                    self.response = self.cg.handleResponse(self.command, response:self.session.channel.execute(c, error: &self.error))
+                    self.delegate?.commandDidResolve!(self)
                 
-                if self.error != nil{
-                    self.delegate?.commandDidError!(self)
+                    if self.error != nil{
+                        self.delegate?.commandDidError!(self)
+                    }
                 }
             }
         }
