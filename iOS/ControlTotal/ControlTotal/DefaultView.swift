@@ -26,7 +26,7 @@ class DefaultView: MasterView, CommandDelegate,  NMSSHSessionDelegate, NMSSHChan
     @IBOutlet weak var artworkImage: UIImageView!
     
     var lastVolumen = -1
-    var session:NMSSHSession = NMSSHSession()
+    var session:NMSSHSession?
     let queue = NSOperationQueue()
     var refreshTimer:NSTimer!
     var disabledCounter:Int = 0
@@ -40,6 +40,7 @@ class DefaultView: MasterView, CommandDelegate,  NMSSHSessionDelegate, NMSSHChan
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.session = Session.sharedInstance.session
         self.rating.delegate = self
         self.backward.titleLabel?.font = self.fontBig
         self.backward.setTitle(NSString.fontAwesomeIconStringForIconIdentifier("fa-backward"), forState: .Normal)
@@ -218,7 +219,7 @@ class DefaultView: MasterView, CommandDelegate,  NMSSHSessionDelegate, NMSSHChan
     var lastOperation:NSOperation?
     
     func executeCommand(command:BasicCommand, extra:String = ""){
-        let c = Command(session: self.session, app:.iTunes, command: command, extra:extra)
+        let c = Command(session: self.session!, app:.iTunes, command: command, extra:extra)
         c.delegate = self
         if lastOperation != nil{
             c.addDependency(lastOperation!)
@@ -349,7 +350,7 @@ class DefaultView: MasterView, CommandDelegate,  NMSSHSessionDelegate, NMSSHChan
                 var folders = macFolder.componentsSeparatedByString("/")
                 var macAbsolute = macFolder.stringByReplacingOccurrencesOfString(folders.first!, withString: "")
                 var tmpFile = NSTemporaryDirectory().stringByAppendingPathComponent(String(arc4random_uniform(UInt32(123))*arc4random_uniform(UInt32(123))))
-                self.session.channel.downloadFile(macAbsolute, to: tmpFile, progress: {(a:UInt, b:UInt) -> Bool in
+                self.session?.channel.downloadFile(macAbsolute, to: tmpFile, progress: {(a:UInt, b:UInt) -> Bool in
                     if a == b{
                         NSOperationQueue.mainQueue().addOperationWithBlock({ () in
                             let imageArtwork = UIImage(named: tmpFile)

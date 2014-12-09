@@ -134,8 +134,8 @@ class LoginView:MasterView, UITextFieldDelegate, NMSSHSessionDelegate, NMSSHChan
         self.login.enabled = true
         
         if(con.authorized){
-            var mainControlView = self.storyboard?.instantiateViewControllerWithIdentifier("DefaultView") as DefaultView
-            mainControlView.session = con.session
+            var mainControlView = self.storyboard?.instantiateViewControllerWithIdentifier("MainNavigation") as UINavigationController
+            Session.sharedInstance.session = con.session
             self.presentViewController(mainControlView, animated: true, completion: nil)
         }else{
             let alert = UIAlertView()

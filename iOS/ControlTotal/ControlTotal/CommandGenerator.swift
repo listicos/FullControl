@@ -7,7 +7,7 @@
 //
 
 enum BasicCommand{
-    case Open, Close, Play, Stop, Pause, Next, Back, Forward, Rewind, Jump, Volume, Info, Search, Rating, Visuals, Artwork
+    case Open, Close, Play, Stop, Pause, Next, Back, Forward, Rewind, Jump, Volume, Info, Search, Rating, Visuals, Artwork, Playlists, Playtrack, Songs
 }
 enum AppsSupported:String{
     case System = "System"
@@ -39,12 +39,22 @@ struct CommandGenerator {
                 script+=" -e 'end tell'"
                 script+=" -e 'else'"
                 script+=" -e 'run application \"\(app.rawValue)\"'"
-                script+=" -e 'delay 2.5'"
+                script+=" -e 'delay 2'"
                 script+=" -e 'tell application \"\(app.rawValue)\" to play'"
                 script+=" -e 'end if'"
                 script+=" -e 'end tell'"
                 return AS_PREFIX+script
-            
+            case .Playtrack:
+                var script:String = "'tell application \"System Events\"'"
+                script+=" -e 'if exists process \"\(app.rawValue)\" then'"
+                script+=" -e 'tell application \"\(app.rawValue)\" to play (some track whose persistent ID is \"\(extra)\")'"
+                script+=" -e 'else'"
+                script+=" -e 'run application \"\(app.rawValue)\"'"
+                script+=" -e 'delay 2'"
+                script+=" -e 'tell application \"\(app.rawValue)\" to play (some track whose persistent ID is \"\(extra)\")'"
+                script+=" -e 'end if'"
+                script+=" -e 'end tell'"
+            return AS_PREFIX+script
             case .Artwork:
                 var script:String = "'tell application \"\(app.rawValue)\"'"
                 script+=" -e 'my e_(\(extra), (path to temporary items) as text, \"myartworkpic\")'"
@@ -157,6 +167,34 @@ struct CommandGenerator {
                     script+=" -e 'return \"track:|:\" & myTrack & \"||\" & \"artist:|:\" & myArtist & \"||\" &  \"album:|:\" & myAlbum & \"||\" & \"totalMinutes:|:\" & tM & \"||\" & \"totalSeconds:|:\" & tS & \"||\" & \"currentMinutes:|:\" & nM & \"||\" & \"currentSeconds:|:\" & nS & \"||\" & \"state:|:\" & player state  & \"||\" & \"visuals:|:\" & myVisuals & \"||\" & \"volume:|:\" & sound volume & \"||\" & \"rating:|:\" & myRating'"
                     script+=" -e 'end tell'"
                 return AS_PREFIX+script
+            case .Songs:
+                var script:String = "'tell application \"\(app.rawValue)\"'"
+                script+=" -e 'set trackNames to \"\"'"
+                script+=" -e 'repeat with aTrack in tracks of library playlist  \(extra)'"
+                script+=" -e 'set Tname to name of aTrack'"
+                script+=" -e 'set Tartist to artist of aTrack'"
+                script+=" -e 'set Talbum to album of aTrack'"
+                script+=" -e 'set Trating to rating of aTrack'"
+                script+=" -e 'set Tid to persistent ID of aTrack'"
+                script+=" -e 'set fullData to Tname & \"|@|\" & Tartist & \"|@|\" & Talbum & \"|@|\" & Trating & \"|@|\" & Tid'"
+                script+=" -e 'set trackNames to trackNames & fullData & \"\n\"'"
+                script+=" -e 'end repeat'"
+                script+=" -e 'return trackNames'"
+                script+=" -e 'end tell'"
+                return AS_PREFIX+script
+        case .Playlists:
+            var script:String = "'tell application \"\(app.rawValue)\"'"
+            script+=" -e 'set playlistNames to \"\"'"
+            script+=" -e 'repeat with p in playlists'"
+            script+=" -e 'set nameP to (name of p)'"
+            script+=" -e 'set sKind to (special kind of p)'"
+            script+=" -e 'set con to (tracks of p)'"
+            script+=" -e 'set sSize to (get count of con)'"
+            script+=" -e 'set pId to (get index of p)'"
+            script+=" -e 'set playlistNames to playlistNames & nameP & \"|@|\" & sKind & \"|@|\" & sSize & \"|@|\" & pId & \"\n\"'"
+            script+=" -e 'end repeat'"
+            script+=" -e 'end tell'"
+            return AS_PREFIX+script
             default:
                 return AS_PREFIX
         }
