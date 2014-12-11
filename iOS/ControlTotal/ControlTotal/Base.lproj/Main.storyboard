@@ -215,31 +215,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-2g-czK">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="437"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="51F-rd-M6r" id="f99-4s-0fE"/>
                                     <outlet property="delegate" destination="51F-rd-M6r" id="u5u-vI-FvT"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bm7-ih-yHG" customClass="MiniPlayer" customModule="ControlTotal" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="501" width="600" height="50"/>
+                                <color key="backgroundColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="siq-5A-bT5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Bm7-ih-yHG" firstAttribute="trailing" secondItem="fvG-2g-czK" secondAttribute="trailing" id="Sps-6F-fS0"/>
                             <constraint firstAttribute="trailing" secondItem="fvG-2g-czK" secondAttribute="trailing" id="V1Q-Dh-5NE"/>
                             <constraint firstItem="fvG-2g-czK" firstAttribute="leading" secondItem="R3j-2f-yMp" secondAttribute="leading" id="WZQ-X2-APB"/>
-                            <constraint firstItem="fvG-2g-czK" firstAttribute="bottom" secondItem="j5Q-VL-f4f" secondAttribute="top" id="ZF7-7i-NIw"/>
+                            <constraint firstItem="Bm7-ih-yHG" firstAttribute="leading" secondItem="fvG-2g-czK" secondAttribute="leading" id="XVQ-ZQ-yzn"/>
+                            <constraint firstItem="Bm7-ih-yHG" firstAttribute="top" secondItem="fvG-2g-czK" secondAttribute="bottom" id="Y9n-4s-PJz"/>
+                            <constraint firstItem="j5Q-VL-f4f" firstAttribute="top" secondItem="Bm7-ih-yHG" secondAttribute="bottom" id="daC-sC-a84"/>
                             <constraint firstItem="fvG-2g-czK" firstAttribute="top" secondItem="HKE-99-zCK" secondAttribute="top" id="eiF-Ym-kA6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Playlist" image="music.png" id="Jyb-dE-yWH"/>
                     <connections>
+                        <outlet property="miniMediaPlayer" destination="Bm7-ih-yHG" id="gCn-96-uV6"/>
                         <outlet property="tableView" destination="fvG-2g-czK" id="1dZ-Nb-cue"/>
                         <segue destination="ia6-Ef-Qxt" kind="show" identifier="Songs" id="SWn-2v-6th"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWT-eB-ECS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3066" y="1603"/>
+            <point key="canvasLocation" x="2920" y="1603"/>
         </scene>
         <!--Songs-->
         <scene sceneID="cnq-te-omG">
@@ -254,29 +266,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NBj-kf-WE9">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ia6-Ef-Qxt" id="Ffc-wx-r3G"/>
                                     <outlet property="delegate" destination="ia6-Ef-Qxt" id="cVW-Pb-GP3"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlD-fr-vGn" customClass="MiniPlayer" customModule="ControlTotal" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="501" width="600" height="50"/>
+                                <color key="backgroundColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lQx-q7-Xi0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NBj-kf-WE9" firstAttribute="leading" secondItem="m1W-jK-WWa" secondAttribute="leading" id="9t3-t6-4lJ"/>
                             <constraint firstItem="NBj-kf-WE9" firstAttribute="bottom" secondItem="baK-Qj-pPd" secondAttribute="top" id="DVX-qD-yzn"/>
+                            <constraint firstItem="mlD-fr-vGn" firstAttribute="width" secondItem="m1W-jK-WWa" secondAttribute="width" id="IlW-5d-Upl"/>
                             <constraint firstItem="NBj-kf-WE9" firstAttribute="top" secondItem="rFc-An-Ucc" secondAttribute="top" id="S2Z-zQ-oi3"/>
+                            <constraint firstItem="mlD-fr-vGn" firstAttribute="top" secondItem="NBj-kf-WE9" secondAttribute="bottom" constant="1" id="Zbd-Ld-eWk"/>
                             <constraint firstAttribute="trailing" secondItem="NBj-kf-WE9" secondAttribute="trailing" id="aSn-4T-hz8"/>
+                            <constraint firstItem="baK-Qj-pPd" firstAttribute="top" secondItem="mlD-fr-vGn" secondAttribute="bottom" id="oSV-zO-ZfE"/>
+                            <constraint firstAttribute="centerX" secondItem="mlD-fr-vGn" secondAttribute="centerX" id="szO-9S-tmE"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DVX-qD-yzn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="miniPlayer" destination="mlD-fr-vGn" id="3kM-E4-C56"/>
                         <outlet property="tableView" destination="NBj-kf-WE9" id="Wzc-BQ-y0g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7d-mK-QXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3049" y="2349"/>
+            <point key="canvasLocation" x="2920" y="2316"/>
         </scene>
         <!--Albums-->
         <scene sceneID="p3w-I8-rUx">
@@ -531,6 +561,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-TM-whP">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="UyA-i3-A0x" id="Cbl-2B-ow9"/>
                                     <outlet property="delegate" destination="UyA-i3-A0x" id="vqQ-EG-Zy0"/>
@@ -625,14 +656,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FSb-qv-b7Y" id="gZn-q1-BDH">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keynote.png" translatesAutoresizingMaskIntoConstraints="NO" id="X9a-zZ-uZu">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="keynote.png" translatesAutoresizingMaskIntoConstraints="NO" id="X9a-zZ-uZu">
                                                     <rect key="frame" x="16" y="13" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Snq-9F-EtP"/>
                                                         <constraint firstAttribute="width" constant="40" id="tpx-D0-L6O"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keynote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41b-Pi-u6x">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Keynote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41b-Pi-u6x">
                                                     <rect key="frame" x="64" y="21" width="64" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -752,6 +783,7 @@
                         <segue destination="llc-sm-9iK" kind="relationship" relationship="viewControllers" id="Kjg-hr-2tR"/>
                         <segue destination="Zne-9a-cIK" kind="relationship" relationship="viewControllers" id="f9l-Yk-CG3"/>
                         <segue destination="RDn-6q-fwO" kind="relationship" relationship="viewControllers" id="gsH-PI-DHF"/>
+                        <segue destination="ia6-Ef-Qxt" kind="show" id="jrN-G0-Q7d"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOi-LK-7TV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,5 +819,8 @@
         <image name="keynote.png" width="50" height="50"/>
         <image name="music.png" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="SWn-2v-6th"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
 </document>

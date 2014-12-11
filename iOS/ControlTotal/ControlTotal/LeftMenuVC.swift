@@ -11,7 +11,6 @@ class LeftMenuVC:AMSlideMenuLeftTableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("WHy?!?!")
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         //self.setFixedStatusBar()
     }

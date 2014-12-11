@@ -8,10 +8,14 @@
 
 class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegate, CommandDelegate{
     var session:NMSSHSession?
-    let queue = NSOperationQueue()
-    var playlist:[[String]] = []
+    var queue:NSOperationQueue?
+    var lastOperation:NSOperation?
     
+    var playlist:[[String]] = []
+
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var miniMediaPlayer: MiniPlayer!
+    
     var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -21,15 +25,16 @@ class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegat
         self.refreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.refreshControl.frame.size.height), animated: true)
         self.session = Session.sharedInstance.session
+        self.queue = Session.sharedInstance.queue
+        self.lastOperation = Session.sharedInstance.lastOperation
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.executeCommand(.Playlists)
+        self.title = "Playlists"
     }
     
     func refresh(refreshControl: UIRefreshControl){
         self.executeCommand(.Playlists)
     }
-    
-    var lastOperation:NSOperation?
     
     func executeCommand(command:BasicCommand, extra:String = ""){
         let c = Command(session: self.session!, app:.iTunes, command: command, extra:extra)
@@ -38,7 +43,7 @@ class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegat
             c.addDependency(lastOperation!)
         }
         lastOperation = c
-        self.queue.addOperation(c)
+        self.queue?.addOperation(c)
     }
     func commandDidResolve(command: Command) {
         if command.command == .Playlists{
@@ -48,7 +53,7 @@ class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegat
             for track in playlistArray{
                 if !track.isEmpty{
                     var trackInfo = track.componentsSeparatedByString("|@|")
-                    if trackInfo.count == 4{
+                    if trackInfo.count == 5{
                         self.playlist.append(trackInfo)
                     }
                 }
@@ -86,15 +91,21 @@ class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("Songs", sender: self.playlist[indexPath.row][3])
+        self.performSegueWithIdentifier("Songs", sender: self.playlist[indexPath.row])
 //        self.executeCommand(.Playtrack, extra: "\(self.playlist[indexPath.row][1])")
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.miniMediaPlayer.refresh()
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
         if segue.identifier == "Songs"{
+            var dataSelected = sender as [String]
             var songs = segue.destinationViewController as iTunesSongs
-            songs.playlistNumber = sender as String
+            songs.title = dataSelected[0]
+            songs.playlistNumber = dataSelected[3]
+            songs.playlistClass = dataSelected[4]
         }
     }
-    
 }

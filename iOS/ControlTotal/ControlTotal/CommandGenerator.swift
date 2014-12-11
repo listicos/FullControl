@@ -170,7 +170,8 @@ struct CommandGenerator {
             case .Songs:
                 var script:String = "'tell application \"\(app.rawValue)\"'"
                 script+=" -e 'set trackNames to \"\"'"
-                script+=" -e 'repeat with aTrack in tracks of library playlist  \(extra)'"
+                script+=" -e 'set tracksList to (tracks of \(extra))'"
+                script+=" -e 'repeat with aTrack in tracksList'"
                 script+=" -e 'set Tname to name of aTrack'"
                 script+=" -e 'set Tartist to artist of aTrack'"
                 script+=" -e 'set Talbum to album of aTrack'"
@@ -190,8 +191,9 @@ struct CommandGenerator {
             script+=" -e 'set sKind to (special kind of p)'"
             script+=" -e 'set con to (tracks of p)'"
             script+=" -e 'set sSize to (get count of con)'"
-            script+=" -e 'set pId to (get index of p)'"
-            script+=" -e 'set playlistNames to playlistNames & nameP & \"|@|\" & sKind & \"|@|\" & sSize & \"|@|\" & pId & \"\n\"'"
+            script+=" -e 'set pId to (get id of p)'"
+            script+=" -e 'set playlistClass to (get class of p)'"
+            script+=" -e 'set playlistNames to playlistNames & nameP & \"|@|\" & sKind & \"|@|\" & sSize & \"|@|\" & pId  & \"|@|\" & playlistClass & \"\n\"'"
             script+=" -e 'end repeat'"
             script+=" -e 'end tell'"
             return AS_PREFIX+script

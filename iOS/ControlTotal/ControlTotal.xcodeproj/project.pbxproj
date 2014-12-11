@@ -66,6 +66,7 @@
 		CC8B27D61A36E747000E9536 /* music_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8B27D41A36E747000E9536 /* music_icon@2x.png */; };
 		CC8B27D91A36E7EF000E9536 /* chrome_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8B27D71A36E7EF000E9536 /* chrome_icon.png */; };
 		CC8B27DA1A36E7EF000E9536 /* chrome_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8B27D81A36E7EF000E9536 /* chrome_icon@2x.png */; };
+		CC8B27DD1A374578000E9536 /* MiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B27DC1A374578000E9536 /* MiniPlayer.swift */; };
 		CC8DFC691A1DAFD10045B355 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8DFC681A1DAFD10045B355 /* Types.swift */; };
 		CC9CF9021A14A89400E7EED6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9CF9011A14A89400E7EED6 /* AppDelegate.swift */; };
 		CC9CF9051A14A89400E7EED6 /* ControlTotal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC9CF9031A14A89400E7EED6 /* ControlTotal.xcdatamodeld */; };
@@ -188,6 +189,7 @@
 		CC8B27D41A36E747000E9536 /* music_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music_icon@2x.png"; sourceTree = "<group>"; };
 		CC8B27D71A36E7EF000E9536 /* chrome_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrome_icon.png; sourceTree = "<group>"; };
 		CC8B27D81A36E7EF000E9536 /* chrome_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrome_icon@2x.png"; sourceTree = "<group>"; };
+		CC8B27DC1A374578000E9536 /* MiniPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniPlayer.swift; sourceTree = "<group>"; };
 		CC8DFC681A1DAFD10045B355 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		CC9CF8FC1A14A89400E7EED6 /* ControlTotal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlTotal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9CF9001A14A89400E7EED6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -364,6 +366,14 @@
 			path = icons;
 			sourceTree = "<group>";
 		};
+		CC8B27DB1A374557000E9536 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				CC8B27DC1A374578000E9536 /* MiniPlayer.swift */,
+			);
+			name = UIView;
+			sourceTree = "<group>";
+		};
 		CC9CF8F31A14A89400E7EED6 = {
 			isa = PBXGroup;
 			children = (
@@ -396,8 +406,9 @@
 			isa = PBXGroup;
 			children = (
 				CC43C8741A27F25E00C1D0B6 /* Images */,
-				CC8B27C91A36E048000E9536 /* Icons.swift */,
+				CC8B27DB1A374557000E9536 /* UIView */,
 				CCA047511A26B75B00EA1A9C /* Date.swift */,
+				CC8B27C91A36E048000E9536 /* Icons.swift */,
 				CC8DFC681A1DAFD10045B355 /* Types.swift */,
 				CC0F13EA1A31C24D009E7E49 /* Session.swift */,
 				CC36621B1A1F0B7F0096758C /* Command.swift */,
@@ -725,6 +736,7 @@
 				CCA5F0AD1A2E7675005BD008 /* UIViewController+AMSlideMenu.m in Sources */,
 				CCE0C1091A24A184003C66A2 /* UIImage+ImageEffects.m in Sources */,
 				CC8B27CA1A36E048000E9536 /* Icons.swift in Sources */,
+				CC8B27DD1A374578000E9536 /* MiniPlayer.swift in Sources */,
 				CC8DFC691A1DAFD10045B355 /* Types.swift in Sources */,
 				CCA5F0AA1A2E7675005BD008 /* AMSlideMenuMainViewController.m in Sources */,
 				CCA5F0A91A2E7675005BD008 /* AMSlideMenuLeftTableViewController.m in Sources */,

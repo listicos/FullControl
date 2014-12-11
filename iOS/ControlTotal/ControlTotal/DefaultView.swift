@@ -40,8 +40,10 @@ class DefaultView: MasterView, CommandDelegate,  NMSSHSessionDelegate, NMSSHChan
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.queue.name = "ssh"
         self.session = Session.sharedInstance.session
         self.rating.delegate = self
+        
         self.backward.titleLabel?.font = self.fontBig
         self.backward.setTitle(NSString.fontAwesomeIconStringForIconIdentifier("fa-backward"), forState: .Normal)
         

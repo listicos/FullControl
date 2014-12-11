@@ -28,9 +28,9 @@ class Connection:NSOperation, NMSSHChannelDelegate{
                     println("authorized")
                     self.session.channel.delegate = self;
                     self.session.channel.requestPty = true;
-                    //self.session.channel.ptyTerminalType = NMSSHChannelPtyTerminal.VT100
+                    self.session.channel.ptyTerminalType = NMSSHChannelPtyTerminal.VT100
                     
-                    self.session.channel.startShell(nil)
+                    //self.session.channel.startShell(nil)
                     self.authorized = true
                 }
             }

@@ -8,6 +8,10 @@
 
 class Session {
     var session:NMSSHSession?
+    let queue = NSOperationQueue()
+    var lastOperation:NSOperation?
+    var refreshTimer:NSTimer?
+    var musicState = ""
     
     class var sharedInstance: Session {
         struct Static {

@@ -29,7 +29,7 @@ class LoginView:MasterView, UITextFieldDelegate, NMSSHSessionDelegate, NMSSHChan
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.queue.name = "ssh"
         var color: UIColor = UIColor(red: CGFloat(0.8), green: CGFloat(0.8), blue: CGFloat(0.8), alpha: CGFloat(1.0))
 
         let attributesDictionary = [NSForegroundColorAttributeName: color]

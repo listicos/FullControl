@@ -8,12 +8,16 @@
 
 class iTunesSongs:UIViewController, UITableViewDataSource, UITableViewDelegate, CommandDelegate{
     var session:NMSSHSession?
-    let queue = NSOperationQueue()
+    var queue:NSOperationQueue?
+    var lastOperation:NSOperation?
+    
     var playlist:[[String]] = []
     
+    @IBOutlet var miniPlayer: MiniPlayer!
     @IBOutlet weak var tableView: UITableView!
     var refreshControl = UIRefreshControl()
     var playlistNumber = ""
+    var playlistClass = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +25,22 @@ class iTunesSongs:UIViewController, UITableViewDataSource, UITableViewDelegate, 
         self.tableView.addSubview(refreshControl)
         self.refreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.refreshControl.frame.size.height), animated: true)
+        
         self.session = Session.sharedInstance.session
+        self.queue = Session.sharedInstance.queue
+        self.lastOperation = Session.sharedInstance.lastOperation
+        
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.executeCommand(.Songs, extra: self.playlistNumber)
+        self.executeCommand(.Songs, extra: self.playlistClass.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())+" id "+self.playlistNumber.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func refresh(refreshControl: UIRefreshControl){
-        self.executeCommand(.Songs, extra: "\(self.playlistNumber)")
+        self.executeCommand(.Songs, extra: self.playlistClass.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())+" id "+self.playlistNumber.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))
     }
-    
-    var lastOperation:NSOperation?
     
     func executeCommand(command:BasicCommand, extra:String = ""){
         let c = Command(session: self.session!, app:.iTunes, command: command, extra:extra)
@@ -39,7 +49,7 @@ class iTunesSongs:UIViewController, UITableViewDataSource, UITableViewDelegate, 
             c.addDependency(lastOperation!)
         }
         lastOperation = c
-        self.queue.addOperation(c)
+        self.queue?.addOperation(c)
     }
     func commandDidResolve(command: Command) {
         if command.command == .Songs{

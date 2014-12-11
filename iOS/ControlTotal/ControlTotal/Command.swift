@@ -33,11 +33,16 @@ class Command : NSOperation, NMSSHChannelDelegate{
             if(!c.isEmpty){
                 self.session.channel.delegate = self
                 if !self.cancelled{
-                    self.response = self.cg.handleResponse(self.command, response:self.session.channel.execute(c, error: &self.error))
-                    self.delegate?.commandDidResolve!(self)
-                
-                    if self.error != nil{
-                        self.delegate?.commandDidError!(self)
+                    if self.session.channel != nil{
+                        var r = self.session.channel.execute(c, error: &self.error)
+                        if r != nil{
+                            self.response = self.cg.handleResponse(self.command, response:r)
+                            self.delegate?.commandDidResolve!(self)
+                            println(r)
+                            if self.error != nil{
+                                self.delegate?.commandDidError!(self)
+                            }
+                        }
                     }
                 }
             }
