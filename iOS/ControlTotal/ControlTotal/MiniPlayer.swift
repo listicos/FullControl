@@ -48,8 +48,8 @@ class MiniPlayer:UIView, CommandDelegate,  NMSSHSessionDelegate, NMSSHChannelDel
         next.setTitle(NSString.fontAwesomeIconStringForIconIdentifier("fa-forward"), forState: .Normal)
         next.addTarget(self, action: "next:", forControlEvents: .TouchUpInside)
 
-        backward.frame = CGRectMake(self.frame.width - CONTROL_DIAMETER*3-20, self.frame.height/2-(CONTROL_DIAMETER/2), CONTROL_DIAMETER, CONTROL_DIAMETER)
-        play.frame = CGRectMake(self.frame.width-CONTROL_DIAMETER*2 - 11, self.frame.height/2-(CONTROL_DIAMETER/2), CONTROL_DIAMETER, CONTROL_DIAMETER)
+        backward.frame = CGRectMake(self.frame.width - CONTROL_DIAMETER*3-21, self.frame.height/2-(CONTROL_DIAMETER/2), CONTROL_DIAMETER, CONTROL_DIAMETER)
+        play.frame = CGRectMake(self.frame.width-CONTROL_DIAMETER*2 - 14, self.frame.height/2-(CONTROL_DIAMETER/2), CONTROL_DIAMETER, CONTROL_DIAMETER)
         next.frame = CGRectMake(self.frame.width-CONTROL_DIAMETER - 7, self.frame.height/2 - (CONTROL_DIAMETER/2), CONTROL_DIAMETER, CONTROL_DIAMETER)
         
         track.font = self.fontLabelBold
@@ -189,28 +189,38 @@ class MiniPlayer:UIView, CommandDelegate,  NMSSHSessionDelegate, NMSSHChannelDel
                 self.sessionInstance.queue.addOperation(c)
             
             } else{
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () in
-                    self.coverImageView?.image = self.artworkDefault
-                    self.backgroundColor = UIColor.blackColor()
-                })
+                self.setDefaultCoverImage()
             }
         }
     }
     
+    func setDefaultCoverImage(){
+        NSOperationQueue.mainQueue().addOperationWithBlock({ () in
+            self.coverImageView?.image = self.artworkDefault
+            self.backgroundColor = UIColor.blackColor()
+        })
+    }
+    
     func downloadDidResolve(command: CommandDownload) {
         NSOperationQueue.mainQueue().addOperationWithBlock({ () in
-            let imageArtwork = UIImage(named: command.pathDownloaded)
+            if NSFileManager.defaultManager().fileExistsAtPath(command.pathDownloaded) {
+                let imageArtwork = UIImage(contentsOfFile: command.pathDownloaded)
+                if imageArtwork != nil{
+                    let size = CGSizeApplyAffineTransform(self.frame.size, CGAffineTransformMakeScale(1, 1))
+                    UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
+                    imageArtwork?.drawInRect(CGRect(origin: CGPointZero, size: size))
+                    let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+                    var tintColor = UIColor.blackColor()
         
-            let size = CGSizeApplyAffineTransform(self.frame.size, CGAffineTransformMakeScale(1, 1))
-            UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
-            imageArtwork!.drawInRect(CGRect(origin: CGPointZero, size: size))
-            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-            var tintColor = UIColor.blackColor()
-        
-            self.backgroundColor = UIColor(patternImage: scaledImage.applyBlurWithRadius(30, tintColor: tintColor.colorWithAlphaComponent(0.4), saturationDeltaFactor: 2, maskImage: nil))
-            self.coverImageView?.image = imageArtwork
+                    self.backgroundColor = UIColor(patternImage: scaledImage.applyBlurWithRadius(30, tintColor: tintColor.colorWithAlphaComponent(0.4), saturationDeltaFactor: 2, maskImage: nil))
+                    self.coverImageView?.image = imageArtwork
+                }else{
+                    self.setDefaultCoverImage()
+                }
+            }else{
+                self.setDefaultCoverImage()
+            }
         })
-
     }
     
     func downloadDidError(command: AnyObject) {
