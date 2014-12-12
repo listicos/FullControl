@@ -14,7 +14,8 @@ class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegat
     var playlist:[[String]] = []
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var miniMediaPlayer: MiniPlayer!
+   // @IBOutlet var miniMediaPlayer: MiniPlayer?
+    var miniMediaPlayer:MiniPlayer!
     
     var refreshControl = UIRefreshControl()
     
@@ -30,7 +31,19 @@ class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegat
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.executeCommand(.Playlists)
         self.title = "Playlists"
+        
+        self.miniMediaPlayer = MiniPlayer(frame: CGRectMake(0, self.view.frame.height-100, self.view.frame.width, 50))
+        self.miniMediaPlayer.backgroundColor = UIColor.blackColor()
+        self.view.addSubview(self.miniMediaPlayer)
     }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.miniMediaPlayer?.frame = CGRectMake(0, self.view.frame.height-100, self.view.frame.width, 50)
+        self.view.addSubview(self.miniMediaPlayer!)
+    }
+    
     
     func refresh(refreshControl: UIRefreshControl){
         self.executeCommand(.Playlists)
@@ -94,10 +107,7 @@ class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegat
         self.performSegueWithIdentifier("Songs", sender: self.playlist[indexPath.row])
 //        self.executeCommand(.Playtrack, extra: "\(self.playlist[indexPath.row][1])")
     }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.miniMediaPlayer.refresh()
-    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
         if segue.identifier == "Songs"{
@@ -106,6 +116,7 @@ class iTunesPlaylist:UIViewController, UITableViewDataSource, UITableViewDelegat
             songs.title = dataSelected[0]
             songs.playlistNumber = dataSelected[3]
             songs.playlistClass = dataSelected[4]
+            songs.miniPlayer = self.miniMediaPlayer
         }
     }
 }

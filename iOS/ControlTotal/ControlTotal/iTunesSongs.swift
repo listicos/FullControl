@@ -9,11 +9,10 @@
 class iTunesSongs:UIViewController, UITableViewDataSource, UITableViewDelegate, CommandDelegate{
     var session:NMSSHSession?
     var queue:NSOperationQueue?
-    var lastOperation:NSOperation?
     
     var playlist:[[String]] = []
     
-    @IBOutlet var miniPlayer: MiniPlayer!
+    var miniPlayer: MiniPlayer?
     @IBOutlet weak var tableView: UITableView!
     var refreshControl = UIRefreshControl()
     var playlistNumber = ""
@@ -28,10 +27,12 @@ class iTunesSongs:UIViewController, UITableViewDataSource, UITableViewDelegate, 
         
         self.session = Session.sharedInstance.session
         self.queue = Session.sharedInstance.queue
-        self.lastOperation = Session.sharedInstance.lastOperation
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.executeCommand(.Songs, extra: self.playlistClass.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())+" id "+self.playlistNumber.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))
+
+        self.miniPlayer?.frame = CGRectMake(0, self.view.frame.height-50, self.view.frame.width, 50)
+        self.view.addSubview(self.miniPlayer!)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,10 +46,10 @@ class iTunesSongs:UIViewController, UITableViewDataSource, UITableViewDelegate, 
     func executeCommand(command:BasicCommand, extra:String = ""){
         let c = Command(session: self.session!, app:.iTunes, command: command, extra:extra)
         c.delegate = self
-        if lastOperation != nil{
-            c.addDependency(lastOperation!)
+        if Session.sharedInstance.lastOperation != nil{
+            c.addDependency(Session.sharedInstance.lastOperation!)
         }
-        lastOperation = c
+        Session.sharedInstance.lastOperation = c
         self.queue?.addOperation(c)
     }
     func commandDidResolve(command: Command) {

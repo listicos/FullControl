@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CC0297511A31B7E5008259BC /* iTunesSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0297501A31B7E5008259BC /* iTunesSongs.swift */; };
+		CC08F7251A3AC7A5005C0662 /* CoverDefaultMini.png in Resources */ = {isa = PBXBuildFile; fileRef = CC08F7231A3AC7A5005C0662 /* CoverDefaultMini.png */; };
+		CC08F7261A3AC7A5005C0662 /* CoverDefaultMini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC08F7241A3AC7A5005C0662 /* CoverDefaultMini@2x.png */; };
+		CC08F7281A3AD885005C0662 /* CommandDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC08F7271A3AD885005C0662 /* CommandDownload.swift */; };
 		CC0F13EB1A31C24D009E7E49 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F13EA1A31C24D009E7E49 /* Session.swift */; };
 		CC3660E51A1DD6010096758C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3660E41A1DD6010096758C /* libz.dylib */; };
 		CC36620F1A1E847E0096758C /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC36620E1A1E847E0096758C /* NMSSH.framework */; };
@@ -19,6 +22,15 @@
 		CC43C87C1A27F34400C1D0B6 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C8791A27F34400C1D0B6 /* bg.jpg */; };
 		CC43C87D1A27F34400C1D0B6 /* bg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C87A1A27F34400C1D0B6 /* bg@2x.jpg */; };
 		CC43C87E1A27F34400C1D0B6 /* bg@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C87B1A27F34400C1D0B6 /* bg@3x.jpg */; };
+		CC49F5F21A39A26C009E27FF /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC49F5F11A39A26C009E27FF /* WatchKit.framework */; };
+		CC49F5F81A39A26C009E27FF /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49F5F71A39A26C009E27FF /* InterfaceController.swift */; };
+		CC49F5FA1A39A26C009E27FF /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49F5F91A39A26C009E27FF /* NotificationController.swift */; };
+		CC49F5FC1A39A26C009E27FF /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC49F5FB1A39A26C009E27FF /* GlanceController.swift */; };
+		CC49F5FE1A39A26C009E27FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC49F5FD1A39A26C009E27FF /* Images.xcassets */; };
+		CC49F6021A39A26C009E27FF /* ControlTotal Watch App.app in Resources */ = {isa = PBXBuildFile; fileRef = CC49F6011A39A26C009E27FF /* ControlTotal Watch App.app */; };
+		CC49F6091A39A26C009E27FF /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC49F6081A39A26C009E27FF /* Interface.storyboard */; };
+		CC49F60B1A39A26C009E27FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC49F60A1A39A26C009E27FF /* Images.xcassets */; };
+		CC49F60E1A39A26C009E27FF /* ControlTotal WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CC49F5EF1A39A26C009E27FF /* ControlTotal WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CC70385F1A1F1F5300E5F622 /* DefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70385E1A1F1F5300E5F622 /* DefaultView.swift */; };
 		CC8B27771A36B34F000E9536 /* iTunesPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B27761A36B34F000E9536 /* iTunesPlaylist.swift */; };
 		CC8B27A31A36DAC9000E9536 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = CC8B277B1A36DAC9000E9536 /* folder.png */; };
@@ -119,6 +131,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CC49F6031A39A26C009E27FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC9CF8F41A14A89400E7EED6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC49F6001A39A26C009E27FF;
+			remoteInfo = "ControlTotal Watch App";
+		};
+		CC49F60C1A39A26C009E27FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC9CF8F41A14A89400E7EED6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC49F5EE1A39A26C009E27FF;
+			remoteInfo = "ControlTotal WatchKit Extension";
+		};
 		CC9CF9151A14A89400E7EED6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CC9CF8F41A14A89400E7EED6 /* Project object */;
@@ -128,8 +154,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CC49F6151A39A26C009E27FF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CC49F60E1A39A26C009E27FF /* ControlTotal WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CC0297501A31B7E5008259BC /* iTunesSongs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesSongs.swift; sourceTree = "<group>"; };
+		CC08F7231A3AC7A5005C0662 /* CoverDefaultMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoverDefaultMini.png; sourceTree = "<group>"; };
+		CC08F7241A3AC7A5005C0662 /* CoverDefaultMini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoverDefaultMini@2x.png"; sourceTree = "<group>"; };
+		CC08F7271A3AD885005C0662 /* CommandDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDownload.swift; sourceTree = "<group>"; };
 		CC0F13EA1A31C24D009E7E49 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CC3660E41A1DD6010096758C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CC36620E1A1E847E0096758C /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
@@ -141,6 +184,18 @@
 		CC43C8791A27F34400C1D0B6 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		CC43C87A1A27F34400C1D0B6 /* bg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg@2x.jpg"; sourceTree = "<group>"; };
 		CC43C87B1A27F34400C1D0B6 /* bg@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg@3x.jpg"; sourceTree = "<group>"; };
+		CC49F5EF1A39A26C009E27FF /* ControlTotal WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ControlTotal WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC49F5F11A39A26C009E27FF /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
+		CC49F5F51A39A26C009E27FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC49F5F61A39A26C009E27FF /* PushNotificationPayload.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PushNotificationPayload.json; sourceTree = "<group>"; };
+		CC49F5F71A39A26C009E27FF /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		CC49F5F91A39A26C009E27FF /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		CC49F5FB1A39A26C009E27FF /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		CC49F5FD1A39A26C009E27FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CC49F6011A39A26C009E27FF /* ControlTotal Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ControlTotal Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC49F6071A39A26C009E27FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC49F6081A39A26C009E27FF /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		CC49F60A1A39A26C009E27FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC5C14491A158FE400377333 /* ControlTotal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ControlTotal-Bridging-Header.h"; sourceTree = "<group>"; };
 		CC70385E1A1F1F5300E5F622 /* DefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultView.swift; sourceTree = "<group>"; };
 		CC8B27761A36B34F000E9536 /* iTunesPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesPlaylist.swift; sourceTree = "<group>"; };
@@ -259,6 +314,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CC49F5EC1A39A26C009E27FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC49F5F21A39A26C009E27FF /* WatchKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC9CF8F91A14A89400E7EED6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +347,8 @@
 		CC43C8741A27F25E00C1D0B6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CC08F7231A3AC7A5005C0662 /* CoverDefaultMini.png */,
+				CC08F7241A3AC7A5005C0662 /* CoverDefaultMini@2x.png */,
 				CC8B27781A36DAC9000E9536 /* icons */,
 				CCB541921A2EF46300DFD43A /* sidebar_icons */,
 				CCA5F0B41A2E856F005BD008 /* tab_icons */,
@@ -313,6 +378,53 @@
 				CC8B27761A36B34F000E9536 /* iTunesPlaylist.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CC49F5F01A39A26C009E27FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC49F5F11A39A26C009E27FF /* WatchKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC49F5F31A39A26C009E27FF /* ControlTotal WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CC49F5F71A39A26C009E27FF /* InterfaceController.swift */,
+				CC49F5F91A39A26C009E27FF /* NotificationController.swift */,
+				CC49F5FB1A39A26C009E27FF /* GlanceController.swift */,
+				CC49F5FD1A39A26C009E27FF /* Images.xcassets */,
+				CC49F5F41A39A26C009E27FF /* Supporting Files */,
+			);
+			path = "ControlTotal WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		CC49F5F41A39A26C009E27FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC49F5F51A39A26C009E27FF /* Info.plist */,
+				CC49F5F61A39A26C009E27FF /* PushNotificationPayload.json */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CC49F6051A39A26C009E27FF /* ControlTotal Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				CC49F6081A39A26C009E27FF /* Interface.storyboard */,
+				CC49F60A1A39A26C009E27FF /* Images.xcassets */,
+				CC49F6061A39A26C009E27FF /* Supporting Files */,
+			);
+			path = "ControlTotal Watch App";
+			sourceTree = "<group>";
+		};
+		CC49F6061A39A26C009E27FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC49F6071A39A26C009E27FF /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CC8B27781A36DAC9000E9536 /* icons */ = {
@@ -389,6 +501,9 @@
 				CC3660E41A1DD6010096758C /* libz.dylib */,
 				CC9CF8FE1A14A89400E7EED6 /* ControlTotal */,
 				CC9CF9171A14A89400E7EED6 /* ControlTotalTests */,
+				CC49F5F31A39A26C009E27FF /* ControlTotal WatchKit Extension */,
+				CC49F6051A39A26C009E27FF /* ControlTotal Watch App */,
+				CC49F5F01A39A26C009E27FF /* Frameworks */,
 				CC9CF8FD1A14A89400E7EED6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -398,6 +513,8 @@
 			children = (
 				CC9CF8FC1A14A89400E7EED6 /* ControlTotal.app */,
 				CC9CF9141A14A89400E7EED6 /* ControlTotalTests.xctest */,
+				CC49F5EF1A39A26C009E27FF /* ControlTotal WatchKit Extension.appex */,
+				CC49F6011A39A26C009E27FF /* ControlTotal Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -412,6 +529,7 @@
 				CC8DFC681A1DAFD10045B355 /* Types.swift */,
 				CC0F13EA1A31C24D009E7E49 /* Session.swift */,
 				CC36621B1A1F0B7F0096758C /* Command.swift */,
+				CC08F7271A3AD885005C0662 /* CommandDownload.swift */,
 				CCD392BD1A254C0300A3864F /* CommandGenerator.swift */,
 				CC3662171A1ECDB40096758C /* Connection.swift */,
 				CC3662191A1EEC0E0096758C /* ConnectionProperties.swift */,
@@ -546,6 +664,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CC49F5EE1A39A26C009E27FF /* ControlTotal WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC49F6141A39A26C009E27FF /* Build configuration list for PBXNativeTarget "ControlTotal WatchKit Extension" */;
+			buildPhases = (
+				CC49F5EB1A39A26C009E27FF /* Sources */,
+				CC49F5EC1A39A26C009E27FF /* Frameworks */,
+				CC49F5ED1A39A26C009E27FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC49F6041A39A26C009E27FF /* PBXTargetDependency */,
+			);
+			name = "ControlTotal WatchKit Extension";
+			productName = "ControlTotal WatchKit Extension";
+			productReference = CC49F5EF1A39A26C009E27FF /* ControlTotal WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		CC49F6001A39A26C009E27FF /* ControlTotal Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC49F6131A39A26C009E27FF /* Build configuration list for PBXNativeTarget "ControlTotal Watch App" */;
+			buildPhases = (
+				CC49F5FF1A39A26C009E27FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ControlTotal Watch App";
+			productName = "ControlTotal Watch App";
+			productReference = CC49F6011A39A26C009E27FF /* ControlTotal Watch App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		CC9CF8FB1A14A89400E7EED6 /* ControlTotal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC9CF91E1A14A89400E7EED6 /* Build configuration list for PBXNativeTarget "ControlTotal" */;
@@ -553,10 +704,12 @@
 				CC9CF8F81A14A89400E7EED6 /* Sources */,
 				CC9CF8F91A14A89400E7EED6 /* Frameworks */,
 				CC9CF8FA1A14A89400E7EED6 /* Resources */,
+				CC49F6151A39A26C009E27FF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CC49F60D1A39A26C009E27FF /* PBXTargetDependency */,
 			);
 			name = ControlTotal;
 			productName = ControlTotal;
@@ -590,6 +743,13 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = listico;
 				TargetAttributes = {
+					CC49F5EE1A39A26C009E27FF = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 7Z3494K4MR;
+					};
+					CC49F6001A39A26C009E27FF = {
+						CreatedOnToolsVersion = 6.2;
+					};
 					CC9CF8FB1A14A89400E7EED6 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = 7Z3494K4MR;
@@ -615,16 +775,37 @@
 			targets = (
 				CC9CF8FB1A14A89400E7EED6 /* ControlTotal */,
 				CC9CF9131A14A89400E7EED6 /* ControlTotalTests */,
+				CC49F5EE1A39A26C009E27FF /* ControlTotal WatchKit Extension */,
+				CC49F6001A39A26C009E27FF /* ControlTotal Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CC49F5ED1A39A26C009E27FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC49F6021A39A26C009E27FF /* ControlTotal Watch App.app in Resources */,
+				CC49F5FE1A39A26C009E27FF /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC49F5FF1A39A26C009E27FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC49F6091A39A26C009E27FF /* Interface.storyboard in Resources */,
+				CC49F60B1A39A26C009E27FF /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC9CF8FA1A14A89400E7EED6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CC43C87D1A27F34400C1D0B6 /* bg@2x.jpg in Resources */,
+				CC08F7261A3AC7A5005C0662 /* CoverDefaultMini@2x.png in Resources */,
 				CC8B27BC1A36DAC9000E9536 /* shopping_bag@2x.png in Resources */,
 				CC9CF90A1A14A89400E7EED6 /* Main.storyboard in Resources */,
 				CC8B27C81A36DAC9000E9536 /* wifi@2x.png in Resources */,
@@ -687,6 +868,7 @@
 				CC8B27BF1A36DAC9000E9536 /* train_ticket.png in Resources */,
 				CC8B27DA1A36E7EF000E9536 /* chrome_icon@2x.png in Resources */,
 				CC43C87C1A27F34400C1D0B6 /* bg.jpg in Resources */,
+				CC08F7251A3AC7A5005C0662 /* CoverDefaultMini.png in Resources */,
 				CC8B27AB1A36DAC9000E9536 /* museum.png in Resources */,
 				CC8B27C11A36DAC9000E9536 /* trash.png in Resources */,
 				CCA5F0931A2E74A9005BD008 /* star_highlighted@2x.png in Resources */,
@@ -709,6 +891,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CC49F5EB1A39A26C009E27FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC49F5FA1A39A26C009E27FF /* NotificationController.swift in Sources */,
+				CC49F5F81A39A26C009E27FF /* InterfaceController.swift in Sources */,
+				CC49F5FC1A39A26C009E27FF /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC9CF8F81A14A89400E7EED6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -720,6 +912,7 @@
 				CC9CF9071A14A89400E7EED6 /* SearchDevicesView.swift in Sources */,
 				CC9CF9051A14A89400E7EED6 /* ControlTotal.xcdatamodeld in Sources */,
 				CC36621C1A1F0B7F0096758C /* Command.swift in Sources */,
+				CC08F7281A3AD885005C0662 /* CommandDownload.swift in Sources */,
 				CC3662181A1ECDB40096758C /* Connection.swift in Sources */,
 				CCE347271A1F35B900A7881A /* NSString+FontAwesome.m in Sources */,
 				CCA5F0A71A2E7675005BD008 /* AMSlideMenuContentSegue.m in Sources */,
@@ -758,6 +951,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CC49F6041A39A26C009E27FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC49F6001A39A26C009E27FF /* ControlTotal Watch App */;
+			targetProxy = CC49F6031A39A26C009E27FF /* PBXContainerItemProxy */;
+		};
+		CC49F60D1A39A26C009E27FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC49F5EE1A39A26C009E27FF /* ControlTotal WatchKit Extension */;
+			targetProxy = CC49F60C1A39A26C009E27FF /* PBXContainerItemProxy */;
+		};
 		CC9CF9161A14A89400E7EED6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CC9CF8FB1A14A89400E7EED6 /* ControlTotal */;
@@ -785,6 +988,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CC49F60F1A39A26C009E27FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ControlTotal WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CC49F6101A39A26C009E27FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "ControlTotal WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		CC49F6111A39A26C009E27FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = ControlTotal_WatchKit_Extension;
+				INFOPLIST_FILE = "ControlTotal Watch App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		CC49F6121A39A26C009E27FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				IBSC_MODULE = ControlTotal_WatchKit_Extension;
+				INFOPLIST_FILE = "ControlTotal Watch App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
 		CC9CF91C1A14A89400E7EED6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -870,6 +1135,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/listico/Documents/Trabajo/own/ios/NMSSH/NMSSHTests/Settings/lib,
@@ -899,6 +1165,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/listico/Documents/Trabajo/own/ios/NMSSH/NMSSHTests/Settings/lib,
@@ -958,6 +1225,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CC49F6131A39A26C009E27FF /* Build configuration list for PBXNativeTarget "ControlTotal Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC49F6111A39A26C009E27FF /* Debug */,
+				CC49F6121A39A26C009E27FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC49F6141A39A26C009E27FF /* Build configuration list for PBXNativeTarget "ControlTotal WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC49F60F1A39A26C009E27FF /* Debug */,
+				CC49F6101A39A26C009E27FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CC9CF8F71A14A89400E7EED6 /* Build configuration list for PBXProject "ControlTotal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

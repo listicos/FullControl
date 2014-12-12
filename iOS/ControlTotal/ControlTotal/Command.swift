@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 listico. All rights reserved.
 //
 @objc protocol CommandDelegate{
-    optional func commandDidResolve(command:Command)
-    optional func commandDidError(command:Command)
+    optional func commandDidResolve(command:AnyObject)
+    optional func commandDidError(command:AnyObject)
 }
 
 class Command : NSOperation, NMSSHChannelDelegate{
@@ -32,13 +32,17 @@ class Command : NSOperation, NMSSHChannelDelegate{
             var c = CommandGenerator.app(self.app, command: self.command, extra:self.extra)
             if(!c.isEmpty){
                 self.session.channel.delegate = self
+                println("CHANNEL DELEGATE")
                 if !self.cancelled{
+                    println("no cancelled")
                     if self.session.channel != nil{
+                        println("con session channel")
                         var r = self.session.channel.execute(c, error: &self.error)
+                        println("after execute")
                         if r != nil{
+                            println("Executed")
                             self.response = self.cg.handleResponse(self.command, response:r)
                             self.delegate?.commandDidResolve!(self)
-                            println(r)
                             if self.error != nil{
                                 self.delegate?.commandDidError!(self)
                             }
@@ -52,6 +56,7 @@ class Command : NSOperation, NMSSHChannelDelegate{
     func channel(channel: NMSSHChannel!, didReadError error: String!) {
         println("Woow:")
         println(error)
+        
     }
     
     func channel(channel: NMSSHChannel!, didReadData message: String!) {

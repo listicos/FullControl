@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ControlTotal Watch App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>ControlTotal.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>CC49F6001A39A26C009E27FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CC9CF8FB1A14A89400E7EED6</key>
 		<dict>
 			<key>primary</key>

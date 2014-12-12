@@ -7,7 +7,7 @@
 //
 
 enum BasicCommand{
-    case Open, Close, Play, Stop, Pause, Next, Back, Forward, Rewind, Jump, Volume, Info, Search, Rating, Visuals, Artwork, Playlists, Playtrack, Songs
+    case Open, Close, Play, Stop, Pause, Next, Back, Forward, Rewind, Jump, Volume, Info, Search, Rating, Visuals, Artwork, Playlists, Playtrack, Songs, DownloadArtwork
 }
 enum AppsSupported:String{
     case System = "System"
@@ -47,11 +47,11 @@ struct CommandGenerator {
             case .Playtrack:
                 var script:String = "'tell application \"System Events\"'"
                 script+=" -e 'if exists process \"\(app.rawValue)\" then'"
-                script+=" -e 'tell application \"\(app.rawValue)\" to play (some track whose persistent ID is \"\(extra)\")'"
+                script+=" -e 'tell application \"\(app.rawValue)\" to play (some track whose persistent ID is \"\(extra.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))\")'"
                 script+=" -e 'else'"
                 script+=" -e 'run application \"\(app.rawValue)\"'"
                 script+=" -e 'delay 2'"
-                script+=" -e 'tell application \"\(app.rawValue)\" to play (some track whose persistent ID is \"\(extra)\")'"
+                script+=" -e 'tell application \"\(app.rawValue)\" to play (some track whose persistent ID is \"\(extra.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))\")'"
                 script+=" -e 'end if'"
                 script+=" -e 'end tell'"
             return AS_PREFIX+script
